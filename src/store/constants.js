@@ -1,0 +1,3 @@
+export const SET_IS_PLAYING = 'SET_IS_PLAYING';
+export const SET_TEMPO = 'SET_TEMPO';
+export const SET_TIME_SIGNATURE = 'SET_TIME_SIGNATURE';

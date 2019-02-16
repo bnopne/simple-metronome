@@ -22,8 +22,15 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
-          { loader: 'vue-loader' },
-        ]
+          {
+            loader: 'vue-loader',
+            options: {
+              transformAssetUrls: {
+                audio: 'src'
+              }
+            }
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -31,6 +38,10 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
         ]
+      },
+      {
+        test: /\.wav$/,
+        use: 'file-loader'
       }
     ]
   },

@@ -1,12 +1,18 @@
 <template>
-  <button class="PlayButton">
+  <button v-on:click="onClick" class="PlayButton">
     <div class="StopSign"></div>
   </button>
 </template>
 
 <script>
-  export default {
+  import { EVENT_NAMES } from '../../constants';
 
+  export default {
+    methods: {
+      onClick() {
+        this.$emit(EVENT_NAMES.STOP_METRONOME);
+      }
+    }
   }
 </script>
 

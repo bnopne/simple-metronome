@@ -4,12 +4,14 @@
     type="number"
     min="0"
     max="999"
+    v-bind:value="value"
+    v-on:input="$emit('input', $event.target.value)"
   >
 </template>
 
 <script>
   export default {
-
+    props: ['value']
   }
 </script>
 

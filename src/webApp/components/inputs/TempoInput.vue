@@ -1,7 +1,7 @@
 <template>
   <div class="TempoInput">
     <div class="TempoInputTitle">BPM</div>
-    <numeric-input></numeric-input>
+    <numeric-input value="tempo"></numeric-input>
   </div>
 </template>
 
@@ -9,6 +9,8 @@
   import NumericInput from './NumericInput.vue';
 
   export default {
+    props: ['tempo'],
+
     components: {
       'numeric-input': NumericInput,
     }

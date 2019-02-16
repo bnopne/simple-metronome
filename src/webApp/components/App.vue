@@ -10,7 +10,7 @@
     <div class="TimeSignatureControlBlock">
       <time-signature-input></time-signature-input>
     </div>
-    <player></player>
+    <metronome :is-playing="isPlaying" :tempo="tempo"></metronome>
   </main>
 </template>
 
@@ -19,7 +19,7 @@
   import StopButton from './buttons/StopButton.vue';
   import TempoInput from './inputs/TempoInput.vue';
   import TimeSignatureInput from './inputs/TimeSignatureInput.vue';
-  import Player from './Player.vue';
+  import Metronome from './Metronome.vue';
 
   import { EVENT_NAMES } from '../constants';
 
@@ -29,7 +29,7 @@
       'stop-button': StopButton,
       'tempo-input': TempoInput,
       'time-signature-input': TimeSignatureInput,
-      'player': Player,
+      'metronome': Metronome,
     },
 
     data: () => ({

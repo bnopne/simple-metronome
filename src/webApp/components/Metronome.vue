@@ -1,6 +1,6 @@
 <template>
   <div class="Metronome">
-    <audio ref="click" src="./click.wav"></audio>
+    <audio ref="click" src="./resources/click.wav"></audio>
     <tick-generator v-on="tickListeners" :is-running="isPlaying" :interval="interval"></tick-generator>
   </div>
 </template>
@@ -30,7 +30,7 @@
           this.$listeners,
           {
             [EVENT_NAMES.TICK]: () => {
-              this.$refs.click.play();
+              this.onTick();
             },
           }
         )
@@ -41,6 +41,14 @@
       this.audioContext = new window.AudioContext();
       const player = this.audioContext.createMediaElementSource(this.$refs.click);
       player.connect(this.audioContext.destination);
+    },
+
+    methods: {
+      onTick() {
+        this.$refs.click.pause();
+        this.$refs.click.currentTime = 0;
+        this.$refs.click.play();
+      }
     }
   }
 </script>

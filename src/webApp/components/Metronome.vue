@@ -1,47 +1,52 @@
 <template>
-  <div>
+  <div class="Metronome">
     <audio ref="click" src="./click.wav"></audio>
+    <tick-generator v-on="tickListeners" :is-running="isPlaying" :interval="interval"></tick-generator>
   </div>
 </template>
 
 <script>
+  import TickGenerator from './TickGenerator.vue';
+  import { EVENT_NAMES } from '../constants';
+
   export default {
+    components: {
+      'tick-generator': TickGenerator,
+    },
+
     props: [
       'timeSignature',
       'tempo',
       'isPlaying'
     ],
 
+    computed: {
+      interval() {
+        return Math.floor((60 * 1000) / this.$props.tempo)
+      },
+      tickListeners() {
+        return Object.assign(
+          {},
+          this.$listeners,
+          {
+            [EVENT_NAMES.TICK]: () => {
+              this.$refs.click.play();
+            },
+          }
+        )
+      }
+    },
+
     mounted() {
       this.audioContext = new window.AudioContext();
       const player = this.audioContext.createMediaElementSource(this.$refs.click);
       player.connect(this.audioContext.destination);
-    },
-
-    watch: {
-      async isPlaying() {
-        if (this.audioContext.state === 'suspended') {
-          await this.audioContext.resume();
-        }
-
-        if (!this.$props.isPlaying) {
-          clearInterval(this.clickIntervalId);
-          return;
-        }
-
-        if (this.clickIntervalId) {
-          clearInterval(this.clickIntervalId);
-        }
-
-        this.clickIntervalId = setInterval(
-          () => this.$refs.click.play(),
-          Math.floor((60 * 1000) / this.$props.tempo)
-        );
-      },
     }
   }
 </script>
 
 <style>
-
+  .Metronome {
+    display: none;
+  }
 </style>

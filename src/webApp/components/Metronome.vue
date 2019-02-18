@@ -37,12 +37,6 @@
       }
     },
 
-    mounted() {
-      this.audioContext = new window.AudioContext();
-      const player = this.audioContext.createMediaElementSource(this.$refs.click);
-      player.connect(this.audioContext.destination);
-    },
-
     methods: {
       onTick() {
         this.$refs.click.pause();

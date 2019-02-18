@@ -5,7 +5,7 @@
       <play-button v-on="playbackListeners" v-else></play-button>
     </div>
     <div class="TempoControlBlock">
-      <tempo-input></tempo-input>
+      <tempo-input :tempo="tempo" v-on="tempoListeners"></tempo-input>
     </div>
     <div class="TimeSignatureControlBlock">
       <time-signature-input></time-signature-input>
@@ -32,14 +32,16 @@
       'metronome': Metronome,
     },
 
-    data: () => ({
-      isPlaying: false,
-      timeSignature: {
-        beats: 4,
-        beatDuration: 4,
-      },
-      tempo: 120,
-    }),
+    data() {
+      return {
+        isPlaying: false,
+        timeSignature: {
+          beats: 4,
+          beatDuration: 4,
+        },
+        tempo: 120,
+      };
+    },
 
     computed: {
       playbackListeners() {
@@ -54,7 +56,18 @@
               this.onStopMetronome();
             }
           }
-        )
+        );
+      },
+      tempoListeners() {
+        return Object.assign(
+          {},
+          this.$listeners,
+          {
+            [EVENT_NAMES.SET_TEMPO]: (tempo) => {
+              this.onSetTempo(tempo);
+            },
+          }
+        );
       }
     },
 
@@ -65,6 +78,9 @@
       onStopMetronome() {
         this.isPlaying = false;
       },
+      onSetTempo(tempo) {
+        this.tempo = tempo;
+      }
     },
   }
 </script>

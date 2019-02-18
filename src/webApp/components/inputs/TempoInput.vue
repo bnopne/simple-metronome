@@ -1,18 +1,28 @@
 <template>
   <div class="TempoInput">
     <div class="TempoInputTitle">BPM</div>
-    <numeric-input value="tempo"></numeric-input>
+    <numeric-input
+      v-bind:value="tempo"
+      v-on:input="onInput"
+    ></numeric-input>
   </div>
 </template>
 
 <script>
   import NumericInput from './NumericInput.vue';
+  import { EVENT_NAMES } from '../../constants';
 
   export default {
     props: ['tempo'],
 
     components: {
       'numeric-input': NumericInput,
+    },
+
+    methods: {
+      onInput(value) {
+        this.$emit(EVENT_NAMES.SET_TEMPO, value);
+      }
     }
   }
 </script>

@@ -2,8 +2,6 @@
   <input
     class="NumericInput"
     type="number"
-    min="0"
-    max="999"
     v-bind:value="value"
     v-on:input="$emit('input', $event.target.value)"
   >
@@ -11,7 +9,7 @@
 
 <script>
   export default {
-    props: ['value']
+    props: ['value'],
   }
 </script>
 

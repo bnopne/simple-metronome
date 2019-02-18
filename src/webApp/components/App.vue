@@ -8,7 +8,11 @@
       <tempo-input :tempo="tempo" v-on="tempoListeners"></tempo-input>
     </div>
     <div class="TimeSignatureControlBlock">
-      <time-signature-input></time-signature-input>
+      <time-signature-input
+        v-bind:beatsPerBar="beatsPerBar"
+        v-bind:beatDuration="beatDuration"
+        v-on="timeSignatureListeners"
+      ></time-signature-input>
     </div>
     <metronome :is-playing="isPlaying" :tempo="tempo"></metronome>
   </main>
@@ -35,10 +39,8 @@
     data() {
       return {
         isPlaying: false,
-        timeSignature: {
-          beats: 4,
-          beatDuration: 4,
-        },
+        beatsPerBar: 4,
+        beatDuration: 4,
         tempo: 120,
       };
     },
@@ -68,6 +70,20 @@
             },
           }
         );
+      },
+      timeSignatureListeners() {
+        return Object.assign(
+          {},
+          this.$listeners,
+          {
+            [EVENT_NAMES.SET_BEATS_PER_BAR]: (beatsPerBar) => {
+              this.onSetBeatsPerBar(beatsPerBar);
+            },
+            [EVENT_NAMES.SET_BEAT_DURATION]: (beatDuration) => {
+              this.onSetBeatDuration(beatDuration);
+            },
+          }
+        );
       }
     },
 
@@ -80,6 +96,12 @@
       },
       onSetTempo(tempo) {
         this.tempo = tempo;
+      },
+      onSetBeatsPerBar(beatsPerBar) {
+        this.beatsPerBar = beatsPerBar;
+      },
+      onSetBeatDuration(beatDuration) {
+        this.beatDuration = beatDuration;
       }
     },
   }

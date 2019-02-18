@@ -3,5 +3,6 @@ export const EVENT_NAMES = {
   STOP_METRONOME: 'stopmetronome',
   TICK: 'tick',
   SET_TEMPO: 'settempo',
-  SET_TIME_SIGNATURE: 'settimesignature',
+  SET_BEATS_PER_BAR: 'setbeatsperbar',
+  SET_BEAT_DURATION: 'setbeatduration',
 };

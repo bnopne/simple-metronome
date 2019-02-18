@@ -4,20 +4,38 @@
       Time Signature
     </div>
     <div class="InputBlock">
-      <numeric-input></numeric-input>
+      <numeric-input
+        v-bind:value="beatsPerBar"
+        v-on:input="onInputBeatsPerBar"
+      ></numeric-input>
       <div class="TimerSignatureInputDivider">/</div>
-      <numeric-input></numeric-input>
+      <numeric-input
+        v-bind:value="beatDuration"
+        v-on:input="onInputBeatDuration"
+      ></numeric-input>
     </div>
   </div>
 </template>
 
 <script>
   import NumericInput from './NumericInput.vue';
+  import { EVENT_NAMES } from '../../constants';
 
   export default {
+    props: ['beatsPerBar', 'beatDuration'],
+
     components: {
       'numeric-input': NumericInput,
     },
+
+    methods: {
+      onInputBeatsPerBar(value) {
+        this.$emit(EVENT_NAMES.SET_BEATS_PER_BAR, value);
+      },
+      onInputBeatDuration(value) {
+        this.$emit(EVENT_NAMES.SET_BEAT_DURATION, value);
+      },
+    }
   }
 </script>
 

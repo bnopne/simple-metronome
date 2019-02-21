@@ -5,7 +5,7 @@
       <play-button v-on="playbackListeners" v-else></play-button>
     </div>
     <div class="TempoControlBlock">
-      <tempo-input :tempo="tempo" v-on="tempoListeners"></tempo-input>
+      <tempo-input v-bind:tempo="tempo" v-on="tempoListeners"></tempo-input>
     </div>
     <div class="TimeSignatureControlBlock">
       <time-signature-input
@@ -14,7 +14,11 @@
         v-on="timeSignatureListeners"
       ></time-signature-input>
     </div>
-    <metronome :is-playing="isPlaying" :tempo="tempo"></metronome>
+    <metronome
+      v-bind:isPlaying="isPlaying"
+      v-bind:tempo="tempo"
+      v-bind:beatsPerBar="beatsPerBar"
+    ></metronome>
   </main>
 </template>
 

@@ -1,24 +1,26 @@
 <template>
   <main class="App">
-    <div class="PlaybackControlBlock">
-      <stop-button v-on="playbackListeners" v-if="isPlaying"></stop-button>
-      <play-button v-on="playbackListeners" v-else></play-button>
-    </div>
-    <div class="TempoControlBlock">
-      <tempo-input v-bind:tempo="tempo" v-on="tempoListeners"></tempo-input>
-    </div>
-    <div class="TimeSignatureControlBlock">
-      <time-signature-input
+    <div class="Container">
+      <div class="PlaybackControlBlock">
+        <stop-button v-on="playbackListeners" v-if="isPlaying"></stop-button>
+        <play-button v-on="playbackListeners" v-else></play-button>
+      </div>
+      <div class="TempoControlBlock">
+        <tempo-input v-bind:tempo="tempo" v-on="tempoListeners"></tempo-input>
+      </div>
+      <div class="TimeSignatureControlBlock">
+        <time-signature-input
+          v-bind:beatsPerBar="beatsPerBar"
+          v-bind:beatDuration="beatDuration"
+          v-on="timeSignatureListeners"
+        ></time-signature-input>
+      </div>
+      <metronome
+        v-bind:isPlaying="isPlaying"
+        v-bind:tempo="tempo"
         v-bind:beatsPerBar="beatsPerBar"
-        v-bind:beatDuration="beatDuration"
-        v-on="timeSignatureListeners"
-      ></time-signature-input>
+      ></metronome>
     </div>
-    <metronome
-      v-bind:isPlaying="isPlaying"
-      v-bind:tempo="tempo"
-      v-bind:beatsPerBar="beatsPerBar"
-    ></metronome>
   </main>
 </template>
 
@@ -112,11 +114,23 @@
 </script>
 
 <style>
+  body {
+    margin: 0;
+  }
+
   .App {
     background-color: #C5C3C6;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Container {
     width: 250px;
-    height: 375px;
-    padding: 40px 10px 60px 10px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

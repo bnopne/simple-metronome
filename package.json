@@ -4,7 +4,8 @@
   "description": "A simple metronome, made with Electron.js and Vue.js",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start-webpack": "webpack-dev-server",
+    "start-dev": "electron src/electronApp",
     "build": "echo puk"
   },
   "repository": {

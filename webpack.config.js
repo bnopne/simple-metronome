@@ -4,16 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist'
-  },
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js'
-    }
-  },
   entry: {
     app: './src/webApp/index.js'
   },
@@ -54,7 +44,7 @@ module.exports = {
     new VueLoaderPlugin(),
   ],
   output: {
-    filename: 'app.bundle.js',
+    filename: 'simple-metronome.bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 };

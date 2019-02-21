@@ -1,16 +1,19 @@
 const { app, BrowserWindow } = require('electron');
 
-let win;
+let primaryWindow;
 
 function createWindow () {
-  win = new BrowserWindow({ width: 300, height: 450 });
-  win.setMenu(null);
+  primaryWindow = new BrowserWindow({ width: 300, height: 450 });
 
-  win.loadURL('http://localhost:8080');
+  primaryWindow.setMenu(null);
+  primaryWindow.loadURL('http://localhost:8080');
 
-  win.on('closed', () => {
-    win = null
-  });
+  primaryWindow.on(
+    'closed',
+      () => {
+      primaryWindow = null;
+    }
+  );
 }
 
 app.on('ready', createWindow);

@@ -6,7 +6,7 @@ function createWindow () {
   primaryWindow = new BrowserWindow({ width: 300, height: 450 });
 
   primaryWindow.setMenu(null);
-  primaryWindow.loadURL('http://localhost:8080');
+  primaryWindow.loadFile('./index.html');
 
   primaryWindow.on(
     'closed',

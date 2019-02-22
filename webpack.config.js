@@ -5,7 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
-    app: './src/webApp/index.js'
+    app: './src/index.js'
   },
   module: {
     rules: [
@@ -39,7 +39,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Simple Metronome',
-      template: './src/webApp/templates/index.html'
+      template: './src/templates/index.html'
     }),
     new VueLoaderPlugin(),
   ],

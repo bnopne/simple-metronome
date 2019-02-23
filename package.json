@@ -5,7 +5,8 @@
   "main": "./start-electron.js",
   "scripts": {
     "webpack": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build-bundle": "webpack --config webpack.config.prod.js",
+    "build": "powershell scripts/build.ps1"
   },
   "repository": {
     "type": "git",

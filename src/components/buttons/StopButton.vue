@@ -5,12 +5,12 @@
 </template>
 
 <script>
-  import { EVENT_NAMES } from '../../constants';
+  import { SET_IS_PLAYING } from '../../store';
 
   export default {
     methods: {
       onClick() {
-        this.$emit(EVENT_NAMES.STOP_METRONOME);
+        this.$store.commit({ type: SET_IS_PLAYING, isPlaying: false });
       }
     }
   }

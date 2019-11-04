@@ -9,19 +9,24 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+  import { get } from 'lodash';
+
   import NumericInput from './NumericInput.vue';
-  import { EVENT_NAMES } from '../../constants';
+  import { SET_TEMPO } from '../../store';
 
   export default {
-    props: ['tempo'],
-
     components: {
       'numeric-input': NumericInput,
     },
 
+    computed: mapState({
+      tempo: state => get(state, 'tempo'),
+    }),
+
     methods: {
       onInput(value) {
-        this.$emit(EVENT_NAMES.SET_TEMPO, value);
+        this.$store.commit({ type: SET_TEMPO, tempo: value });
       }
     }
   }

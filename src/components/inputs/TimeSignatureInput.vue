@@ -18,22 +18,36 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+  import { get } from 'lodash';
+
+  import { SET_TIME_SIGNATURE } from '../../store';
   import NumericInput from './NumericInput.vue';
-  import { EVENT_NAMES } from '../../constants';
 
   export default {
-    props: ['beatsPerBar', 'beatDuration'],
-
     components: {
       'numeric-input': NumericInput,
     },
 
+    computed: mapState({
+      beatDuration: state => get(state, ['timeSignature', 'beatDuration']),
+      beatsPerBar : state => get(state, ['timeSignature', 'beatsPerBar']),
+    }),
+
     methods: {
       onInputBeatsPerBar(value) {
-        this.$emit(EVENT_NAMES.SET_BEATS_PER_BAR, value);
+        this.$store.commit({
+          type        : SET_TIME_SIGNATURE,
+          beatsPerBar : value,
+          beatDuration: this.beatDuration,
+        });
       },
       onInputBeatDuration(value) {
-        this.$emit(EVENT_NAMES.SET_BEAT_DURATION, value);
+        this.$store.commit({
+          type        : SET_TIME_SIGNATURE,
+          beatsPerBar : this.beatsPerBar,
+          beatDuration: value,
+        });
       },
     }
   }

@@ -1,14 +1,14 @@
 <template>
-  <div class="TimerSignatureInput">
-    <div class="TitleBlock">
+  <div class="timer-signature-input">
+    <div class="time.timer-signature-input__title-block">
       Time Signature
     </div>
-    <div class="InputBlock">
+    <div class="time-signature-input__input-block">
       <numeric-input
         v-bind:value="beatsPerBar"
         v-on:input="onInputBeatsPerBar"
       ></numeric-input>
-      <div class="TimerSignatureInputDivider">/</div>
+      <div class="timer-signature-input__divider">/</div>
       <numeric-input
         v-bind:value="beatDuration"
         v-on:input="onInputBeatDuration"
@@ -22,7 +22,7 @@
   import { get } from 'lodash';
 
   import { SET_TIME_SIGNATURE } from '../../store';
-  import NumericInput from './NumericInput.vue';
+  import NumericInput from './numeric-input.vue';
 
   export default {
     components: {
@@ -54,7 +54,7 @@
 </script>
 
 <style>
-  .TimerSignatureInput {
+  .timer-signature-input {
     width: 150px;
     display: flex;
     flex-direction: column;
@@ -62,12 +62,12 @@
     align-items: center;
   }
 
-  .TitleBlock {
+  .timer-signature-input__title-block {
     font-size: 18px;
     font-weight: 800;
   }
 
-  .InputBlock {
+  .time-signature-input__input-block {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -75,7 +75,7 @@
     align-items: center;
   }
 
-  .TimerSignatureInputDivider {
+  .timer-signature-input__divider {
     font-size: 29px;
     font-weight: 800;
   }

@@ -1,6 +1,6 @@
 <template>
   <input
-    class="NumericInput"
+    class="numeric-input"
     type="number"
     v-bind:value="value"
     v-on:input="$emit('input', $event.target.value)"
@@ -14,7 +14,7 @@
 </script>
 
 <style>
-  .NumericInput {
+  .numeric-input {
     width: 50px;
     padding: 4px;
     background: #DCDCDD;
@@ -23,7 +23,7 @@
     transition-duration: 200ms;
   }
 
-  .NumericInput:focus {
+  .numeric-input:focus {
     box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
   }
 </style>

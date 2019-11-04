@@ -1,6 +1,6 @@
 <template>
-  <div class="TempoInput">
-    <div class="TempoInputTitle">BPM</div>
+  <div class="tempo-input">
+    <div class="tempo-input__title">BPM</div>
     <numeric-input
       v-bind:value="tempo"
       v-on:input="onInput"
@@ -12,7 +12,7 @@
   import { mapState } from 'vuex';
   import { get } from 'lodash';
 
-  import NumericInput from './NumericInput.vue';
+  import NumericInput from './numeric-input.vue';
   import { SET_TEMPO } from '../../store';
 
   export default {
@@ -33,7 +33,7 @@
 </script>
 
 <style>
-  .TempoInput {
+  .tempo-input {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,7 +41,7 @@
     width: 110px;
   }
 
-  .TempoInputTitle {
+  .tempo-input__title {
     font-size: 18px;
     font-weight: 800;
   }

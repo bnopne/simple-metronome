@@ -1,14 +1,14 @@
 <template>
-  <main class="App">
-    <div class="Container">
-      <div class="PlaybackControlBlock">
+  <main class="app">
+    <div class="app__container">
+      <div>
         <stop-button v-if="isPlaying"></stop-button>
         <play-button v-else></play-button>
       </div>
-      <div class="TempoControlBlock">
+      <div>
         <tempo-input></tempo-input>
       </div>
-      <div class="TimeSignatureControlBlock">
+      <div>
         <time-signature-input></time-signature-input>
       </div>
       <metronome></metronome>
@@ -20,11 +20,11 @@
   import { mapState } from 'vuex';
   import { get } from 'lodash';
 
-  import PlayButton from './buttons/PlayButton.vue';
-  import StopButton from './buttons/StopButton.vue';
-  import TempoInput from './inputs/TempoInput.vue';
-  import TimeSignatureInput from './inputs/TimeSignatureInput.vue';
-  import Metronome from './Metronome.vue';
+  import PlayButton from './buttons/play-button.vue';
+  import StopButton from './buttons/stop-button.vue';
+  import TempoInput from './inputs/tempo-input.vue';
+  import TimeSignatureInput from './inputs/time-signature-input.vue';
+  import Metronome from './metronome.vue';
   import store from '../store';
 
   export default {
@@ -49,7 +49,7 @@
     margin: 0;
   }
 
-  .App {
+  .app {
     background-color: #C5C3C6;
     width: 100vw;
     height: 100vh;
@@ -59,7 +59,7 @@
     align-items: center;
   }
 
-  .Container {
+  .app__container {
     width: 250px;
     height: 350px;
     display: flex;

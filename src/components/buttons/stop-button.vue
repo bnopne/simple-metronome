@@ -1,6 +1,6 @@
 <template>
-  <button v-on:click="onClick" class="PlayButton">
-    <div class="StopSign"></div>
+  <button v-on:click="onClick" class="play-button">
+    <div class="stop-sign"></div>
   </button>
 </template>
 
@@ -17,7 +17,7 @@
 </script>
 
 <style>
-  .PlayButton {
+  .play-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,7 +29,7 @@
     border-radius: 50%;
   }
 
-  .StopSign {
+  .stop-sign {
     width: 100px;
     height: 100px;
     background-color: #CDACA1;

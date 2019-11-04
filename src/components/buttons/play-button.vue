@@ -1,6 +1,6 @@
 <template>
-  <button v-on:click="onClick" class="PlayButton">
-    <div class="PlaySign"></div>
+  <button v-on:click="onClick" class="play-button">
+    <div class="play-button__play-sign"></div>
   </button>
 </template>
 
@@ -17,7 +17,7 @@
 </script>
 
 <style>
-  .PlayButton {
+  .play-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,7 +29,7 @@
     border-radius: 50%;
   }
 
-  .PlaySign {
+  .play-button__play-sign {
     width: 0;
     height: 0;
     transform: translateX(12%);

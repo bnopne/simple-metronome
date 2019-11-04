@@ -1,5 +1,5 @@
 <template>
-  <div class="Metronome">
+  <div class="metronome">
     <audio ref="strongClick" src="./resources/strongClick.wav"></audio>
     <audio ref="click" src="./resources/click.wav"></audio>
   </div>
@@ -71,7 +71,7 @@
 </script>
 
 <style>
-  .Metronome {
+  .metronome {
     display: none;
   }
 </style>
